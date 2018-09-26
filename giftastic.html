@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giftastic!</title>
+    <meta charset="utf-8">
+  <title>Favorite Movies</title>
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Topics Search</h1>
+
+        <div id="topic-view"></div>
+        <form id="topic-form">
+            <label for='topic-input'>Add a Topic.</label>
+            <input type="text" id="topic-input"><br>
+            <input id="add-topic" type="submit" value="Add a Topic.">
+        </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            //create an array of topics.
+            var topics = ['Alligator', 'Gila Monster', 'Viper', 'Tortoise'];
+
+            function renderButtons() {
+                $('#topic-view').empty();
+
+                for (var i = 0; i < topics.length; i++) {
+
+                    var a = $('<button>');
+                    a.addClass('topic');
+                    a.attr('data-name', topics[i]);
+                    a.text(topics[i]);
+                    $('#topic-view').append(a);
+                }
+            }
+            
+            $('#add-topic').on('click', function(event) {
+                event.preventDefault();
+                var topic = $('#topic-input').val().trim();
+                topics.push(topic);
+                renderButtons();
+            });
+
+            renderButtons();
+
+        </script>
+    </div>
+</body>
+
+</html>
